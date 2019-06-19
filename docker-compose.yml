@@ -27,6 +27,7 @@ services:
       - POSTGRES_PASSWORD=saleor
 
   redis:
+    privileged: true
     image: library/redis:5.0-alpine
     restart: unless-stopped
     networks:
