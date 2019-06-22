@@ -10,8 +10,8 @@ services:
       - ./templates/:/app/templates:Z
       - ./tests/:/app/tests
       # prevents overshadowing of build-time assets
-      # - /app/saleor/static/assets
-      - ./webpack-bundle.json:/app/webpack-bundle.json
+      - /app/saleor/static/assets
+      #- ./webpack-bundle.json:/app/webpack-bundle.json
       - /app/templates/templated_email/compiled
       # shared volume between celery and web for media
       - saleor-media:/app/media
@@ -21,6 +21,8 @@ services:
       - 5432:5432
 
   redis:
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - 6379:6379
 
